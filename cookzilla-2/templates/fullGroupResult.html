@@ -1,0 +1,113 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+
+
+<table>
+	<th>Group Name</th>
+	<th>Group Creator</th>
+	<th>Group Description</th>
+	
+	
+
+{% for line in group %}
+	<tr>
+		<td>{{line.gName}}</td>
+		<td>{{line.gCreator}}</td>
+		<td>{{line.gDesc}}</td>
+
+	</tr>
+
+{% endfor %}
+</table>
+</br>
+
+
+
+<form action ="/postEvent"  method = "POST">
+
+	<td><input type="submit" value ="Post an Event"/></td>
+	<!--td id = "gName"><input type = "hidden" name = "gName" value = "{{group.gName}}"/></td>
+	<td id = "gCreator"><input type = "hidden" name = "gCreator" value ="{{group.gCreator}}"/></td-->
+
+
+
+{% for gInfo in group%}
+
+	<input type = "hidden" name="gName" value ="{{gInfo.gName}}" />
+	<input type = "hidden" name ="gCreator" value = "{{gInfo.gCreator}}" />
+{% endfor %}
+<!--a href="/postEvent"> Post an Event</a-->
+
+</form>
+</br>
+</br>
+
+
+<table>
+<th>Event ID</th>
+<th> Event Name</th>
+<th>Event Description</th>
+<th> Event Date</th>
+<th> View Event Pictures </th>
+
+
+{% for line in events %}
+<tr>
+	<td>{{line.eID}}</td>
+	<td>{{line.eName}}</td>
+	<td>{{line.eDesc}}</td>
+	<td>{{line.eDate}}</td>
+
+
+
+	<form action ="/viewGroupPics" method="POST">
+		<td><input type="submit" value = "View Event Pictures" /></td>
+
+		<tr style="display:none;">
+
+		<td id = "eID"><input type = "hidden" name="eID" value ="{{line.eID}}"/></td>
+		
+
+</form>
+
+
+
+	
+</tr>
+{% endfor %}
+
+
+</table>
+
+
+
+
+
+
+</br>
+<br>
+
+
+<br>
+<br>
+<button onclick ="history.back()"> Go Back </button>
+<br>
+<br>
+<a href="/home">Go to Main Page</a>
+<br>
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

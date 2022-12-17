@@ -1,0 +1,78 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+
+<form action="/fullRecipe" method="POST">
+<table>
+	<th>RecipeID</th>
+	<th>Title</th>
+	<th>numServings</th>
+	<th>postedBy</th>
+	<th>Tag</th>
+	<th> Rating</th>
+	<th>View Full Recipe</th>
+	<th>{{repID}}</th>
+
+<{% for line in posts %}
+	<tr>
+		<td>{{line.recipeID}}</td>
+		<td>{{line.title}}</td>
+		<td>{{line.numServings}}</td>
+		<td>{{line.postedBy}}</td>
+		<td>{{line.tagText}}</td>
+		<td>{{line.stars}}</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<!--table>
+	<th> Step No </th>
+	<th> Description </th>
+
+	{% for line in step%}
+	<tr>
+		<td>{{line.stepNo}}</td>
+		<td>{{line.sDesc}}</td>
+	</tr>
+	{% endfor %}
+
+</table>
+
+<table>
+	<th>Ingredient Name</th>
+	<th>Amount</th>
+	<th>Unit</th>
+
+	{% for line in ingredients %}
+	<tr>
+		<td>{{ingredients.iName}}</td>
+		<td>{{}}
+
+
+
+</table-->
+</form>
+
+<br>
+<br>
+<button onclick ="history.back()"> Go Back </button>
+<br>
+<br>
+<a href="/home">Post a message</a>
+<br>
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

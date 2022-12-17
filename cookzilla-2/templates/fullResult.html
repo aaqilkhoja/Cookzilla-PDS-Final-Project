@@ -1,0 +1,182 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+
+
+<table>
+	<th>RecipeID</th>
+	<th>Title</th>
+	<th>numServings</th>
+	<th>postedBy</th>
+	<th>Tag</th>
+	
+	
+	
+
+{% for line in posts %}
+	<tr>
+		<td>{{line.recipeID}}</td>
+		<td>{{line.title}}</td>
+		<td>{{line.numServings}}</td>
+		<td>{{line.postedBy}}</td>
+		<td>{{line.tagText}}</td>
+		
+
+		<!-- use Get instead of post to see parameters-->
+		
+		<!--form action ="/fullRecipe" method="POST">
+		<td><input type="submit" value = "View Full Recipe" /></td>
+
+		<tr>
+
+			<td id = "repid"><input type = "hidden" name="repid" value ="{{line.recipeID}}"/></td>
+			
+		</tr>
+
+	</form-->
+		
+
+	</tr>
+
+{% endfor %}
+</table>
+
+
+</br>
+
+<table>
+	<th>Average Rating</th>
+{% for star in stars %}
+<tr>
+
+		<td>{{star.Avg}}</td>
+</tr>
+		{% endfor %}
+
+</table>
+
+</br>
+
+<table>
+<th>Ingredient Name</th>
+<th> Amount</th>
+<th>Units</th>
+
+
+{% for line in ingredients %}
+<tr>
+	<td>{{line.iName}}</td>
+	<td>{{line.amount}}</td>
+	<td>{{line.unitName}}</td>
+	
+
+</tr>
+{% endfor %}
+
+
+</table>
+</br>
+</br>
+
+
+<table>
+	<th> Pictures</th>
+{% for line in pictures %}
+<tr>
+	<!--td>{{line.pictureURL}}</td-->
+
+	<td><img src={{line.pictureURL}} style="width:150px;height:150px;"></td>
+
+	
+	
+</tr>
+
+{% endfor %}
+	</table>
+
+
+</br>
+<table>
+	<th> Step No </th>
+	<th> Description </th>
+
+	{% for line in step%}
+	<tr>
+		<td>{{line.stepNo}}</td>
+		<td>{{line.sDesc}}</td>
+	</tr>
+	{% endfor %}
+
+</table>
+
+</br>
+
+<table>
+</br>
+<th> Review Title</th>
+<th> Review Description</th>
+<th> Posted by</th>
+<th> Stars</th>
+
+{% for line in reviews%}
+<tr>
+	<td>{{line.revTitle}}</td>
+	<td>{{line.revDesc}}</td>
+	<td>{{line.userName}}</td>
+	<td>{{line.stars}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+<table>
+	<th> Review Pictures</th>
+{% for line in reviewPictures %}
+<tr>
+	<!--td>{{line.pictureURL}}</td-->
+
+	<td><img src={{line.pictureURL}} style="width:150px;height:150px;"></td>
+
+	
+	
+</tr>
+
+{% endfor %}
+	</table>
+
+</br>
+
+<form action="/postReview" method = "POST"> 
+
+		<input type = "hidden" name="repid" value ="{{repID}}" />
+
+<input type="submit" value = "Post a review for this Recipe?" />
+
+
+
+</form>
+
+<br>
+<br>
+<button onclick ="history.back()"> Go Back </button>
+<br>
+<br>
+<a href="/home">Go to Main Page</a>
+<br>
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

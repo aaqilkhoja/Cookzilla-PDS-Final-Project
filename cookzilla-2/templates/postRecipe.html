@@ -1,0 +1,180 @@
+<html>
+<head>
+
+
+<!-- dynamically adding rows to table taken from
+	https://www.etutorialspoint.com/index.php/11-dynamically-add-delete-html-table-rows-using-javascript -->
+
+<script type = "text/javascript">
+
+	function addRows(tableno){ 
+
+	if(tableno==1){
+		var table = document.getElementById('stepTable');
+		cellCount=1;
+	}
+	else{
+		var table = document.getElementById('ingredientsTable');
+		cellCount=3;
+	}
+	
+	var rowCount = table.rows.length;
+	//var cellCount = table.rows[0].cells.length; 
+	//var cellCount=1;
+	var row = table.insertRow(rowCount);
+	for(var i =0; i <cellCount; i++){
+		var cell = 'cell'+i;
+		cell = row.insertCell(i);
+		var copycel = document.getElementById('col'+i).innerHTML;
+		cell.innerHTML=copycel;
+
+	}
+}
+	
+	function deleteRows(tableno){
+
+		if(tableno==1){
+		var table = document.getElementById('stepTable');
+	}
+	else{
+		var table = document.getElementById('ingredientsTable');
+	}
+		
+		var rowCount = table.rows.length;
+		if(rowCount > '2'){
+			var row = table.deleteRow(rowCount-1);
+			rowCount--;
+		}
+		else{
+			alert('Must have at least 1 row');
+		}
+	}
+</script>
+
+
+<body>
+
+	<button onclick ="history.back()"> Go Back </button>
+</br>
+</br>
+<form action="/post_Recipe" method="POST">
+	<!--input type="number" name = "recipeID" placeholder= "Recipe_ID" /></br-->
+</br>
+	<input type="text" name = "title" placeholder="Title of Recipe" required/> </br>
+	</br>
+	<input type="number" name = "numServings" placeholder= "Number Of Servings" required/></br>
+	</br>
+	<!--input type="text" name = "postedBy" placeholder="Author of Recipe" required/> </br-->
+	</br>
+
+
+	<label for="tags"> Choose a tag:</label>
+
+	<select name ="tags" id = "tags">
+		<option value = "indian"> Indian</option>
+		<option value = "chinese"> Chinese</option>
+		<option value = "american"> American</option>
+		<option value = "japanese"> Japanese</option>
+		<option value = "middle eastern"> Middle Eastern</option>
+		<option value = "mexican"> Mexican</option>
+		<option value = "italian"> Italian</option>
+		<option value = "holiday_specials"> Holiday Specials</option>
+		<option value = "others"> Others</option>
+	</select>
+
+	<input type="submit" value = Post />
+</br>
+</br>
+	<label for="picture_URL"> To upload pictures, please put picture URL: </label>
+</br>
+	<input type = "text"  name ="picture_URL" placeholder = "Picture URL" /> </br>
+
+
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+
+<!--/form-->
+
+<!--form action ="/post_Recipe" method="POST"-->
+	
+	<table id = "stepTable">
+		<tr>
+			
+			<th> Step Description</th>
+		</tr>
+
+		<tr>
+
+			<td id = "col0"><input type="text" name ="stepDesc" value=""/></td>
+			
+			</tr>
+
+
+
+	</table>
+
+	<table>
+	<tr>
+		<td><input type="button" value = "Add Step" onclick="addRows(1)"/></td>
+		<td><input type="button" value = "Delete Step" onclick="deleteRows(1)"/></td>
+		
+
+	</tr>
+</table>
+
+<!--table id = "ingredientsTable">
+		<tr>
+			
+			<th>Ingredients</th>
+			<th>Amount</th>
+			<th>Units</th>
+		</tr>
+
+		<tr>
+
+			<td id = "col0"><input type="text" name ="ingredients" value=""/></td>
+			<td id = "col1"><input type="text" name ="unit" value=""/></td>
+			<td id = "col1"><input type="text" name ="amount" value=""/></td>
+
+			<td id = "col2"> <select name ="amount">
+		<option value = "grams"> grams</option>
+		<option value = "litres"> litres</option>
+		<option value = "lbs"> lbs</option>
+		<option value = "mg"> mg</option>
+		<option value = "ml"> ml</option>
+		<option value = "oz"> oz</option>
+		<option value = "tbsp"> tbsp</option>
+		<option value = "tsp"> tsp</option>
+		<option value = "kg"> kg</option>
+	</select>
+			
+			
+			</tr>
+
+
+
+	</table>
+<table>
+	<tr>
+		<td><input type="button" value = "Add Ingredient" onclick="addRows(2)"/></td>
+		<td><input type="button" value = "Delete Ingredient" onclick="deleteRows(2)"/></td>
+		
+
+	</tr>
+
+
+	</table-->
+
+
+</form>
+
+
+
+
+
+</body>
+
+
+</html>
+

@@ -1,0 +1,173 @@
+<html>
+<head>
+
+
+<!-- dynamically adding rows to table taken from
+	https://www.etutorialspoint.com/index.php/11-dynamically-add-delete-html-table-rows-using-javascript -->
+
+<script type = "text/javascript">
+
+	function addRows(){ 
+
+	
+		var table = document.getElementById('ingredientsTable');
+		cellCount=3;
+	
+	
+	var rowCount = table.rows.length;
+	//var cellCount = table.rows[0].cells.length; 
+	//var cellCount=1;
+	var row = table.insertRow(rowCount);
+	for(var i =0; i <cellCount; i++){
+		var cell = 'cell'+i;
+		cell = row.insertCell(i);
+		var copycel = document.getElementById('col'+i).innerHTML;
+		cell.innerHTML=copycel;
+
+	}
+}
+	
+	function deleteRows(tableno){
+
+		if(tableno==1){
+		var table = document.getElementById('stepTable');
+	}
+	else{
+		var table = document.getElementById('ingredientsTable');
+	}
+		
+		var rowCount = table.rows.length;
+		if(rowCount > '2'){
+			var row = table.deleteRow(rowCount-1);
+			rowCount--;
+		}
+		else{
+			alert('Must have at least 1 row');
+		}
+	}
+</script>
+
+
+<body>
+
+	<button onclick ="history.back()"> Go Back </button>
+	
+</br>
+</br>
+<form action="/ingredients_table" method="POST">
+	
+
+
+
+
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+
+<!--/form-->
+
+<!--form action ="/post_Recipe" method="POST"-->
+
+
+	<input type="submit" value = Submit />
+
+	<h2>Ingredients:</h2>
+	<table id = "ingredientsTable">
+
+		<tr>
+			<td id = "repid"><input type = "hidden" name="repid" value ="{{rid}}"/></td>
+		</tr>
+		<tr>
+			
+			<th>Ingredients</th>
+			<th>Amount</th>
+			<th>Units</th>
+		</tr>
+
+		<tr>
+
+			<td id = "col0"><input type="text" name ="ingredients" value="" required/></td>
+			<td id = "col1"><input type="text" name ="amount" value="" required/></td>
+			
+
+			<td id = "col2"> <select name ="unit">
+		<option value = "grams"> grams</option>
+		<option value = "litres"> litres</option>
+		<option value = "lbs"> lbs</option>
+		<option value = "mg"> mg</option>
+		<option value = "ml"> ml</option>
+		<option value = "oz"> oz</option>
+		<option value = "tbsp"> tbsp</option>
+		<option value = "tsp"> tsp</option>
+		<option value = "kg"> kg</option>
+	</select>
+			
+			
+			</tr>
+
+
+	</table>
+
+	<table>
+	<tr>
+		<td><input type="button" value = "Add Ingredient" onclick="addRows()"/></td>
+		<td><input type="button" value = "Delete Ingredient" onclick="deleteRows()"/></td>
+		
+
+	</tr>
+</table>
+
+<!--table id = "ingredientsTable">
+		<tr>
+			
+			<th>Ingredients</th>
+			<th>Amount</th>
+			<th>Units</th>
+		</tr>
+
+		<tr>
+
+			<td id = "col0"><input type="text" name ="ingredients" value=""/></td>
+			<td id = "col1"><input type="text" name ="unit" value=""/></td>
+			<td id = "col1"><input type="text" name ="amount" value=""/></td>
+
+			<td id = "col2"> <select name ="amount">
+		<option value = "grams"> grams</option>
+		<option value = "litres"> litres</option>
+		<option value = "lbs"> lbs</option>
+		<option value = "mg"> mg</option>
+		<option value = "ml"> ml</option>
+		<option value = "oz"> oz</option>
+		<option value = "tbsp"> tbsp</option>
+		<option value = "tsp"> tsp</option>
+		<option value = "kg"> kg</option>
+	</select>
+			
+			
+			</tr>
+
+
+
+	</table>
+<table>
+	<tr>
+		<td><input type="button" value = "Add Ingredient" onclick="addRows(2)"/></td>
+		<td><input type="button" value = "Delete Ingredient" onclick="deleteRows(2)"/></td>
+		
+
+	</tr>
+
+
+	</table-->
+
+
+</form>
+
+
+
+
+
+</body>
+
+
+</html>

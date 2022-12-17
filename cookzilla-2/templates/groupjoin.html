@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+<body>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<table>
+	<th>Group Name</th>
+	<th>Group Creator</th>
+	<th>Join Group</th>
+	
+	{% for line in data%}
+	<tr>
+		<td>{{line.gName}}</td>
+		<td>{{line.gCreator}}</td>
+		
+		<form action ="/joinGroup" method="POST">
+		<td><input type="submit" value = "Join Group and See Group Details" /></td>
+
+		<tr style="display:none;">
+
+			<td id = "gName"><input type = "hidden" name="gName" value ="{{line.gName}}"/></td>
+			<td id = "gCreator"><input type = "hidden" name="gCreator" value ="{{line.gCreator}}"/></td>
+	</tr>
+
+</form> 
+</tr>
+	{% endfor %}
+
+</table>
+
+<br>
+<br>
+<button onclick ="history.back()"> Go Back </button>
+<br>
+<br>
+
+
+</body>
+
+
+</html>

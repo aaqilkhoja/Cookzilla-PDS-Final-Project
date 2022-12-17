@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+
+
+{% for line in eventPics %}
+<tr>
+	<!--td>{{line.pictureURL}}</td-->
+
+	<td><img src={{line.pictureURL}} style="width:150px;height:150px;"></td>
+
+	
+	
+</tr>
+
+{% endfor %}
+	</table>
+
+
+
+<br>
+<br>
+<button onclick ="history.back()"> Go Back </button>
+<br>
+<br>
+<a href="/home">Go to Main Page</a>
+<br>
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

@@ -1,0 +1,103 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+
+
+<table>
+	<th>Group Name</th>
+	<th>Group Creator</th>
+	<th>Group Description</th>
+	
+	
+
+{% for line in group %}
+	<tr>
+		<td>{{line.gName}}</td>
+		<td>{{line.gCreator}}</td>
+		<td>{{line.gDesc}}</td>
+
+	</tr>
+
+{% endfor %}
+</table>
+</br>
+
+
+{% for gInfo in group%}
+
+	<input type = "hidden" name="gName" value ="{{gInfo.gName}}" />
+	<input type = "hidden" name ="gCreator" value = "{{gInfo.gCreator}}" />
+{% endfor %}
+
+
+</form>
+</br>
+</br>
+
+
+<table>
+<th>Event ID</th>
+<th> Event Name</th>
+<th>Event Description</th>
+<th> Event Date</th>
+
+
+
+{% for line in events %}
+<tr>
+	<td>{{line.eID}}</td>
+	<td>{{line.eName}}</td>
+	<td>{{line.eDesc}}</td>
+	<td>{{line.eDate}}</td>
+
+
+
+	
+</tr>
+{% endfor %}
+
+
+</table>
+
+<table>
+
+<th> Event Pictures</th>
+	
+
+	{% for line in eventPics %}
+	<tr>
+		<td><img src={{line.pictureURL}} style="width:150px;height:150px;"></td>
+
+	</tr>
+</table>
+
+
+
+
+
+</br>
+<br>
+
+
+<br>
+<br>
+<button onclick ="history.back()"> Go Back </button>
+<br>
+<br>
+<a href="/home">Go to Main Page</a>
+<br>
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

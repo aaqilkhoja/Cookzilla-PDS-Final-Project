@@ -1,0 +1,47 @@
+<html>
+<head>
+
+<body>
+
+	<button onclick ="history.back()"> Go Back </button>
+</br>
+</br>
+<form action="/post_Event" method="POST">
+</br>
+
+	<input type = "hidden" name="gName" value ="{{gName}}" />
+	<input type = "hidden" name="gCreator" value ="{{gCreator}}" />
+</br>
+
+
+	
+	<input type="text" name = "eName" placeholder= "Event Name" required/></br>
+	</br>
+	<input type="text" name = "eDesc" placeholder= "Event Description" required/></br>
+	</br>
+	<input type ="datetime-local" name = "eDate" required/></br>
+</br>
+
+	<label for="picture_URL"> To upload pictures, please put picture URL: </label>
+</br>
+	<input type = "text"  name ="picture_URL" placeholder = "Picture URL" /> </br> </br>
+
+	<input type="submit" value = Post />
+
+
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+
+
+
+</form>
+
+
+
+
+
+</body>
+
+
+</html>

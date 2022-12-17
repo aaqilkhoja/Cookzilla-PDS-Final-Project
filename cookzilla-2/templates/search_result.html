@@ -1,0 +1,54 @@
+<html>
+<head>
+</head>
+<body>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<table>
+	<th>RecipeID</th>
+	<th>Title</th>
+	<th>numServings</th>
+	<th>postedBy</th>
+	<th>Tag</th>
+	<th> Rating</th>
+	<th>View Full Recipe</th>
+
+
+	{% for line in step%}
+	<tr>
+		<td>{{line.recipeID}}</td>
+		<td>{{line.title}}</td>
+		<td>{{line.numServings}}</td>
+		<td>{{line.postedBy}}</td>
+		<td>{{line.tagText}}</td>
+		<td>{{line.Avg}}</td>
+
+		
+		<form action ="/fullRecipe" method="POST">
+		<td><input type="submit" value = "View Full Recipe" /></td>
+
+		<tr style="display:none;">
+
+			<td id = "repid"><input type = "hidden" name="repid" value ="{{line.recipeID}}"/></td>
+	</tr>
+
+</form>
+</tr>
+	{% endfor %}
+
+</table>
+
+<br>
+<br>
+<button onclick ="history.back()"> Go Back </button>
+<br>
+<br>
+
+
+</body>
+
+
+</html>

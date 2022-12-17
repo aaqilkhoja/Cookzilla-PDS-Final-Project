@@ -1,0 +1,61 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<br>
+
+
+
+<form id = "search" method = "POST">
+		<input type="number"  placeholder="Search by Recipe ID"  name="Uid" />
+		<!--<input type="search" id = "search" name = "q" placeholder = "Search for a Recipe"> -->
+		<input type="submit" name = "action" value="Submit">
+	</br>
+</br>
+   
+		<label for="tags"> Search a tag:</label>
+</br>
+	<select name ="tags" id = "tags">
+		<option value = "indian"> Indian</option>
+		<option value = "chinese"> Chinese</option>
+		<option value = "american"> American</option>
+		<option value = "japanese"> Japanese</option>
+		<option value = "middle eastern"> Middle Eastern</option>
+		<option value = "mexican"> Mexican</option>
+		<option value = "italian"> Italian</option>
+		<option value = "holiday_specials"> Holiday Specials</option>
+		<option value = "others"> Others</option>
+	</select>
+
+
+
+
+		<input type="submit" name = "action" value="Search by Tag">
+	</br>
+</br>
+
+
+		
+		<input type="number" min ="0" max ="5" step=0.1 placeholder = "Enter a value from 0.0 to 5.0" name = "rating"/>
+		<input type="submit" name ="action" value="Search by Rating" >
+
+	</br>
+		<input type="submit" name="action" value="Search by Rating and Tag" >
+
+	<!--	<button>Search by Tag</button>
+		<button>Search by Rating</button>
+	-->
+
+	</form>
+
+</br>
+<button onclick ="history.back()"> Go Back </button>
+</br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

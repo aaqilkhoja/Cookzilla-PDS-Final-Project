@@ -1,0 +1,55 @@
+<html>
+<head>
+</head>
+<body>
+
+	<a href="/postRecipe">Post a Recipe</a>
+<br>
+
+<a href="/results">Search for a Recipe</a>
+<br>
+
+<a href="/groups"> Search/Join Groups</a>
+<br>
+
+<a href="/viewGroups"> View your Groups</a>
+<br>
+
+<a href="/logout">Logout</a>
+<form action="/post" method="POST">
+	<h1>Welcome {{username}}</h1> 
+	
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+
+
+Here are your recipes:
+
+<table>
+	<th>RecipeID</th>
+	<th>Title</th>
+	<th>numServings</th>
+	<th>postedBy</th>
+
+{% for line in recipes %}
+	<tr>
+		<td>{{line.recipeID}}</td>
+		<td>{{line.title}}</td>
+		<td>{{line.numServings}}</td>
+		<td>{{line.postedBy}}</td>
+	</tr>
+{% endfor %}
+</table>
+<br>
+<br>
+
+</body>
+
+
+</html>

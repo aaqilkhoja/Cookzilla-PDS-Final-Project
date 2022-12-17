@@ -1,0 +1,102 @@
+<html>
+<head>
+
+<body>
+
+	<button onclick ="history.back()"> Go Back </button>
+</br>
+</br>
+<form action="/post_Review" method="POST">
+</br>
+
+	<input type = "hidden" name="repid" value ="{{repID}}" />
+</br>
+
+
+	<input type="text" name = "title" placeholder="Review Title" required/> </br>
+	</br>
+	<input type="text" name = "desc" placeholder= "Review Description" required/></br>
+	</br>
+	<p>Rating</p>
+	<input type="number" name = "stars" placeholder="Rating (0-5)" min ="1" max= "5" required/> </br>
+	</br>
+
+
+
+	<label for="picture_URL"> To upload pictures, please put picture URL: </label>
+</br>
+	<input type = "text"  name ="picture_URL" placeholder = "Picture URL" /> </br>
+
+
+
+
+	
+
+	<input type="submit" value = Post />
+
+
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+
+<!--/form-->
+
+<!--form action ="/post_Recipe" method="POST"-->
+	
+
+	
+
+<!--table id = "ingredientsTable">
+		<tr>
+			
+			<th>Ingredients</th>
+			<th>Amount</th>
+			<th>Units</th>
+		</tr>
+
+		<tr>
+
+			<td id = "col0"><input type="text" name ="ingredients" value=""/></td>
+			<td id = "col1"><input type="text" name ="unit" value=""/></td>
+			<td id = "col1"><input type="text" name ="amount" value=""/></td>
+
+			<td id = "col2"> <select name ="amount">
+		<option value = "grams"> grams</option>
+		<option value = "litres"> litres</option>
+		<option value = "lbs"> lbs</option>
+		<option value = "mg"> mg</option>
+		<option value = "ml"> ml</option>
+		<option value = "oz"> oz</option>
+		<option value = "tbsp"> tbsp</option>
+		<option value = "tsp"> tsp</option>
+		<option value = "kg"> kg</option>
+	</select>
+			
+			
+			</tr>
+
+
+
+	</table>
+<table>
+	<tr>
+		<td><input type="button" value = "Add Ingredient" onclick="addRows(2)"/></td>
+		<td><input type="button" value = "Delete Ingredient" onclick="deleteRows(2)"/></td>
+		
+
+	</tr>
+
+
+	</table-->
+
+
+</form>
+
+
+
+
+
+</body>
+
+
+</html>
